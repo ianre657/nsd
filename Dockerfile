@@ -74,7 +74,8 @@ RUN export PATH=/home/${user}/opt/conda/bin:${PATH} \
 #     && rm -rf /var/lib/apt/lists/*
 
 USER root
-RUN rm -rf /var/lib/apt/lists/*
+RUN rm -rf /var/lib/apt/lists/* \
+    && chown -R ${user}:${user} /home/${user}
 
 USER ${user}
 WORKDIR /home/${user}
